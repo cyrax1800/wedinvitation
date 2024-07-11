@@ -1,0 +1,32 @@
+.pagination {
+  @apply flex;
+  @apply border;
+  @apply rounded-xl;
+}
+
+.paginationNumber {
+  &:not(.disabled) {
+    cursor: pointer;
+  }
+
+  &.selected {
+    @apply bg-blue-200;
+    @apply text-blue-900;
+  }
+
+  @apply font-semibold;
+  @apply rounded-xl;
+  @apply text-xs;
+  @apply px-2;
+  @apply my-0.5;
+  min-height: 32px;
+  @apply flex;
+
+  @media (min-width: theme("screens.lg")) {
+    &:hover {
+      &:not(.disabled) {
+        @apply bg-blue-50;
+      }
+    }
+  }
+}

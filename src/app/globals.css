@@ -2,32 +2,101 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.animate-flip {
+  -webkit-animation: flip 1s cubic-bezier(0,0,.2,1) infinite;
+  animation: flip 1s cubic-bezier(0,0,.2,1) infinite;
+  transform-style: preserve-3d;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@keyframes flip {
+  0% {
+      transform: rotateX(0deg);
+      transform-origin: 50% bottom
+  }
+
+  to {
+      transform: rotateX(170deg);
+      transform-origin: 50% bottom
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+:root {
+  --font-color-high-emphasis: #293036;
+  --font-color-low-emphasis: #52616c;
+  --font-color-disabled: #7e8d99;
+  --font-color-alert: #fe7574;
+  --font-color-activity: #ff8c00;
+  --font-color-positive: #00b36e;
+  --font-color-invert: #fff;
+
+  --font-size-mobile-h1: 36px;
+  --line-height-mobile-h1: 40px;
+  --font-size-mobile-h2: 22px;
+  --line-height-mobile-h2: 28px;
+  --font-size-mobile-h3: 18px;
+  --line-height-mobile-h3: 24px;
+  --font-size-mobile-b1: 16px;
+  --line-height-mobile-b1: 22px;
+  --font-size-mobile-b2: 14px;
+  --line-height-mobile-b2: 20px;
+  --font-size-mobile-b3: 12px;
+  --line-height-mobile-b3: 16px;
+  --font-size-mobile-sm: 10px;
+  --line-height-mobile-sm: 14px;
+
+  /* Typography sizes & line-heights (desktop) */
+  --font-size-desktop-h1: 56px;
+  --line-height-desktop-h1: 60px;
+  --font-size-desktop-h2: 38px;
+  --line-height-desktop-h2: 42px;
+  --font-size-desktop-h3: 24px;
+  --line-height-desktop-h3: 30px;
+  --font-size-desktop-b1: 18px;
+  --line-height-desktop-b1: 24px;
+  --font-size-desktop-b2: 16px;
+  --line-height-desktop-b2: 22px;
+  --font-size-desktop-b3: 14px;
+  --line-height-desktop-b3: 20px;
+  --font-size-desktop-sm: 12px;
+  --line-height-desktop-sm: 16px;
+
+  /* Responsive typography (mobile-first) */
+  --font-size-h1: var(--font-size-mobile-h1);
+  --line-height-h1: var(--line-height-mobile-h1);
+  --font-size-h2: var(--font-size-mobile-h2);
+  --line-height-h2: var(--line-height-mobile-h2);
+  --font-size-h3: var(--font-size-mobile-h3);
+  --line-height-h3: var(--line-height-mobile-h3);
+  --font-size-b1: var(--font-size-mobile-b1);
+  --line-height-b1: var(--line-height-mobile-b1);
+  --font-size-b2: var(--font-size-mobile-b2);
+  --line-height-b2: var(--line-height-mobile-b2);
+  --font-size-b3: var(--font-size-mobile-b3);
+  --line-height-b3: var(--line-height-mobile-b3);
+  --font-size-sm: var(--font-size-mobile-sm);
+  --line-height-sm: var(--line-height-mobile-sm);
+
+  --var-appbar-height: 48px;
+  --var-footer-height-desktop: 300px;
+  --var-footer-height-mobile: 500px;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@media (min-width: 1024px) {
+  :root {
+    /* Responsive typography */
+    --font-size-h1: var(--font-size-desktop-h1);
+    --line-height-h1: var(--line-height-desktop-h1);
+    --font-size-h2: var(--font-size-desktop-h2);
+    --line-height-h2: var(--line-height-desktop-h2);
+    --font-size-h3: var(--font-size-desktop-h3);
+    --line-height-h3: var(--line-height-desktop-h3);
+    --font-size-b1: var(--font-size-desktop-b1);
+    --line-height-b1: var(--line-height-desktop-b1);
+    --font-size-b2: var(--font-size-desktop-b2);
+    --line-height-b2: var(--line-height-desktop-b2);
+    --font-size-b3: var(--font-size-desktop-b3);
+    --line-height-b3: var(--line-height-desktop-b3);
+    --font-size-sm: var(--font-size-desktop-sm);
+    --line-height-sm: var(--line-height-desktop-sm);
   }
 }
