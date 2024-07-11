@@ -2,7 +2,7 @@
     color: var(--font-color-high-emphasis);
     @apply text-sm;
 
-    @media (min-width: theme("screens.lg")) {
+    @media (min-width: theme("screens.md")) {
         @apply text-base;
     }
 }

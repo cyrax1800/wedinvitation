@@ -60,7 +60,7 @@ export const WishesComponent: FC<WishesComponentProp> = ({
                     </div>
                     <div className={cx(styles.gridItem)}>
                         <span className={cx(styles.textNormal3Default)}>
-                            Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet
+                            Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet
                         </span>
                         <span className={cx(styles.textNormal3Default, "text-right", "mt-2")}>John Doe</span>
                     </div>

@@ -7,12 +7,11 @@ const padStart = (number: number): string => {
 interface numProp {
     current: number,
     unit: string,
-    flip: boolean,
     previous?: number,
     id: string
 };
 
-export const NumberBox = ({ current, unit, flip, previous, id }: numProp) => {
+export const NumberBox = ({ current, unit, previous, id }: numProp) => {
     return (
         <>
             <div className="relative perspective">
@@ -21,7 +20,7 @@ export const NumberBox = ({ current, unit, flip, previous, id }: numProp) => {
                 <div
                     className="relative rounded-t-lg h-10 w-20 lg:h-20 lg:w-44 overflow-hidden brightness-80"
                 >
-                    <p className="absolute top-5 lg:top-8 left-0 right-0 text-center text-theme_softRed text-4xl lg:text-8xl font-bold">
+                    <p suppressHydrationWarning className="absolute top-5 lg:top-8 left-0 right-0 text-center text-theme_softRed text-4xl lg:text-8xl font-bold">
                         {typeof current === 'undefined' ? '' : padStart(current)}
                     </p>
                     <svg width="100%" height="100%">
@@ -38,7 +37,7 @@ export const NumberBox = ({ current, unit, flip, previous, id }: numProp) => {
                 <div
                     className="relative rounded-b-lg h-10 w-20 lg:h-20 lg:w-44 overflow-hidden"
                 >
-                    <p className="absolute bottom-5 lg:bottom-8 left-0 right-0 text-center text-theme_softRed text-4xl lg:text-8xl font-bold" data-testid={id}>
+                    <p suppressHydrationWarning className="absolute bottom-5 lg:bottom-8 left-0 right-0 text-center text-theme_softRed text-4xl lg:text-8xl font-bold" data-testid={id}>
                         {typeof previous === 'undefined' ? '' : padStart(previous)}
                     </p>
                     <svg width="100%" height="100%">
@@ -61,7 +60,7 @@ export const NumberBox = ({ current, unit, flip, previous, id }: numProp) => {
                             className="absolute top-0 left-0 rounded-t-lg h-10 w-20 lg:h-20 lg:w-44 overflow-hidden brightness-80 animate-flipTop origin-bottom preserve-3d backface-hidden"
                         >
                             <div className="relative h-10 lg:h-20">
-                                <p className="absolute top-5 lg:top-8 left-0 right-0 text-center text-theme_softRed text-4xl lg:text-8xl font-bold">
+                                <p suppressHydrationWarning className="absolute top-5 lg:top-8 left-0 right-0 text-center text-theme_softRed text-4xl lg:text-8xl font-bold">
                                     {typeof previous === 'undefined' ? '' : padStart(previous)}
                                 </p>
                                 <svg width="100%" height="100%">
@@ -79,7 +78,7 @@ export const NumberBox = ({ current, unit, flip, previous, id }: numProp) => {
                             className="absolute top-10 lg:top-20 left-0 rounded-b-lg h-10 w-20 lg:h-20 lg:w-44 overflow-hidden animate-flipBottom origin-top preserve-3d backface-hidden"
                         >
                             <div className="relative h-10 lg:h-20">
-                                <p className="absolute bottom-5 lg:bottom-8 left-0 right-0 text-center text-theme_softRed text-4xl lg:text-8xl font-bold">
+                                <p suppressHydrationWarning className="absolute bottom-5 lg:bottom-8 left-0 right-0 text-center text-theme_softRed text-4xl lg:text-8xl font-bold">
                                     {typeof current === 'undefined' ? '' : padStart(current)}
                                 </p>
                                 <svg width="100%" height="100%">

@@ -7,3 +7,5 @@ export * from "./RSVPComponent";
 export * from "./WishesComponent";
 export * from "./RSVPSubmitedComponent";
 export * from "./FooterComponent";
+export * from "./WatchYoutubeComponent";
+export * from "./GalleryComponent";

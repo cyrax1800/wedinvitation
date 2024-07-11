@@ -81,7 +81,7 @@
   --var-footer-height-mobile: 500px;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   :root {
     /* Responsive typography */
     --font-size-h1: var(--font-size-desktop-h1);

@@ -36,7 +36,7 @@ export const EventDetailComponent: FC<EventDetailComponentProp> = ({
                         <span className={cx(styles.textTitle2)}>Reception</span>
                         <span className="mt-12">Monday, 11 November 2024</span>
                         <span >18.30 WIB - Selesai</span>
-                        <span className="mt-12">Neo Soho 9th Floor</span>
+                        <span className="mt-12">Neo Soho Residence 9th Floor</span>
                         <span className="text-center">Letjen S. Parman St No.28, RT.3/RW.5, South Tanjung Duren, Grogol petamburan, West Jakarta City, Jakarta 11470</span>
                         <a className={cx(styles.buttonDefault)} href="https://maps.app.goo.gl/Aq4wx8QRnm1b3FE17" target="_blank">
                             <div className="w-4 h-4 mr-2">

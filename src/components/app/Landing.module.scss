@@ -48,16 +48,35 @@
 .textTitle {
     @apply text-6xl;
     font-family: var(--font-tangerine);
+
+    @media (min-width: theme("screens.md")) {
+        @apply text-8xl;
+    }
+}
+
+.textTitle1 {
+    @apply text-5xl;
+    font-family: var(--font-tangerine);
+
+    @media (min-width: theme("screens.md")) {
+        @apply text-7xl;
+    }
 }
 
 .textTitle2 {
     @apply text-4xl;
     font-family: var(--font-tangerine);
+    @media (min-width: theme("screens.md")) {
+        @apply text-6xl;
+    }
 }
 
 .textTitle3 {
     @apply text-3xl;
     font-family: var(--font-tangerine);
+    @media (min-width: theme("screens.md")) {
+        @apply text-5xl;
+    }
 }
 
 .textNormal1Default {
@@ -79,7 +98,6 @@
 .buttonDefault {
     @apply flex;
     @apply border-2;
-    @apply mt-4;
     @apply rounded-3xl;
     @apply py-2;
     @apply px-6;
@@ -94,9 +112,8 @@
     @apply gap-4;
     @apply space-y-4;
     @apply mt-8;
-    @media (min-width: theme("screens.lg")) {
+    @media (min-width: theme("screens.md")) {
         @apply columns-3;
-        @apply mx-20;
     }
 }
 
@@ -111,3 +128,16 @@
     box-sizing: border-box;
     break-inside: avoid;
 }
+
+.iframeContainer {
+    overflow: hidden;
+    position: relative;
+    @apply w-full;
+    height: 0;
+    padding-bottom: 56.25%;
+    @media (min-width: theme("screens.lg")) {
+      width: theme("screens.lg");
+      height: calc(theme("screens.lg") * 9 / 16);
+      padding-bottom: 0;
+    }
+  }
