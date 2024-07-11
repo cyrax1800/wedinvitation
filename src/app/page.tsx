@@ -30,7 +30,7 @@ export default function Home() {
       <div className={cx("flex flex-col", !isOpen ? "h-screen overflow-hidden" : "")}>
         {isOpen &&
           <>
-            <audio src="/theme.mp3" autoPlay />
+            <audio src="/theme.mp3" autoPlay loop/>
           </>
         }
         <HeaderComponent />

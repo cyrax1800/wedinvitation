@@ -13,7 +13,7 @@ export const GalleryComponent: FC<GalleryComponentProp> = ({
     return (
         <>
             <div className={cx(styles.sectionContainer)}>
-                <span className={cx(styles.textTitle)}>Captured Memories</span>
+                <span className={cx(styles.textTitle, "text-center")}>Captured Memories</span>
 
                 <div className={cx(styles.gridContainer)}>
                     <div className="w-full h-auto">
