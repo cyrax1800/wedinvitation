@@ -15,10 +15,14 @@ export const TimerContainer = ({ countDownDuration }: TimeProps) => {
     var difference = countDownDate - now;
 
     const [time, setTime] = useState<number[]>([
-        Math.floor(difference / (1000 * 60 * 60 * 24)), 
-        Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)), 
-        Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)), 
-        Math.floor((difference % (1000 * 60)) / 1000)
+        Math.floor(difference / (1000 * 60 * 60 * 24)),
+        Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+        Math.floor((difference % (1000 * 60)) / 1000),
+        Math.floor(difference / (1000 * 60 * 60 * 24)),
+        Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60)),
+        Math.floor((difference % (1000 * 60)) / 1000),
     ]);
 
     useEffect(() => {
@@ -32,8 +36,8 @@ export const TimerContainer = ({ countDownDuration }: TimeProps) => {
             var minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-            setFlip([days != tmpTime[0], hours != tmpTime[1], minutes != tmpTime[2], seconds != tmpTime[3]])
-            tmpTime = [days, hours, minutes, seconds]
+            // setFlip([days != tmpTime[0], hours != tmpTime[1], minutes != tmpTime[2], seconds != tmpTime[3]])
+            tmpTime = [days, hours, minutes, seconds, tmpTime[0], tmpTime[1], tmpTime[2], tmpTime[3]]
             setTime(tmpTime)
 
             if (difference <= 0) {
@@ -51,13 +55,13 @@ export const TimerContainer = ({ countDownDuration }: TimeProps) => {
     return (
         <div>
             <div className="py-6 flex items-center justify-between md:mt-2 rounded-xl md:px-6 md:py-8 ">
-                <NumberBox num={time[0]} unit="Days" flip={flip[0]} />
-                <span className="text-5xl -mt-4 md:-mt-8 inline-block md:text-7xl font-normal text-gray-800 ">:</span>
-                <NumberBox num={time[1]} unit="Hours" flip={flip[1]} />
-                <span className="text-5xl -mt-4 md:-mt-8 inline-block md:text-7xl font-normal text-gray-800 ">:</span>
-                <NumberBox num={time[2]} unit="Minutes" flip={flip[2]} />
-                <span className="text-5xl -mt-4 md:-mt-8 inline-block md:text-7xl font-normal text-gray-800 ">:</span>
-                <NumberBox num={time[3]} unit="Seconds" flip={flip[3]} />
+                <NumberBox id={`days${time[0]}-${time[4]}`} key={`days${time[0]}-${time[4]}`} current={time[0]} previous={time[4]} unit="Days" flip={flip[0]} />
+                <span className="text-5xl -mt-12 md:-mt-12 inline-block md:text-7xl font-normal text-white-800 ">:</span>
+                <NumberBox id={`hours${time[1]}-${time[5]}`} key={`days${time[1]}-${time[5]}`} current={time[1]} previous={time[5]} unit="Hours" flip={flip[1]} />
+                <span className="text-5xl -mt-12 md:-mt-12 inline-block md:text-7xl font-normal text-white-800 ">:</span>
+                <NumberBox id={`minutes${time[2]}-${time[6]}`} key={`days${time[2]}-${time[6]}`} current={time[2]} previous={time[6]} unit="Minutes" flip={flip[2]} />
+                <span className="text-5xl -mt-12 md:-mt-12 inline-block md:text-7xl font-normal text-white-800 ">:</span>
+                <NumberBox id={`seconds${time[3]}-${time[7]}`} key={`days${time[3]}-${time[7]}`} current={time[3]} previous={time[7]} unit="Seconds" flip={flip[3]} />
             </div>
 
         </div>

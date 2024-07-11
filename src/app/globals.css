@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.animate-flip {
+/* .animate-flip {
   -webkit-animation: flip 1s cubic-bezier(0,0,.2,1) infinite;
   animation: flip 1s cubic-bezier(0,0,.2,1) infinite;
   transform-style: preserve-3d;
@@ -18,7 +18,7 @@
       transform: rotateX(170deg);
       transform-origin: 50% bottom
   }
-}
+} */
 
 :root {
   --font-color-high-emphasis: #293036;
