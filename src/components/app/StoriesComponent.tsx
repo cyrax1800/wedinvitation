@@ -60,9 +60,9 @@ export const StoriesComponent: FC<StoriesComponentProp> = ({
     const desktopContent = () => {
         const content = data.map((value, index) => {
             return (
-                <div key={value.date}>
+                <>
                     {index % 2 == 1 && <div className="border-r border-blue-900"></div>}
-                    <div className={cx("flex items-center border-blue-900", index % 2 == 0 ? "border-r" : "border-l")}>
+                    <div key={value.date} className={cx("flex items-center border-blue-900", index % 2 == 0 ? "border-r" : "border-l")}>
                         {index % 2 == 1 && <div className="w-20 h-1 border-b-2 border-blue-900"></div>}
                         <div className={cx("flex flex-col items-center text-center py-10", index % 2 == 0 ? "pl-10 pr-2" : "pl-2 pr-10")}>
                             <span className="text-lg">{value.date}</span>
@@ -72,7 +72,7 @@ export const StoriesComponent: FC<StoriesComponentProp> = ({
                         {index % 2 == 0 && <div className="w-20 h-1 border-b-2 border-blue-900"></div>}
                     </div>
                     {index % 2 == 0 && <div className="border-l border-blue-900"></div>}
-                </div>
+                </>
             )
         })
         return content
