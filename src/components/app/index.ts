@@ -4,8 +4,9 @@ export * from "./EventDetailComponent";
 export * from "./StoriesComponent";
 export * from "./GiftComponent";
 export * from "./RSVPComponent";
-export * from "./WishesComponent";
+export * from "./RSVPGuestComponent"
 export * from "./RSVPSubmitedComponent";
+export * from "./WishesComponent";
 export * from "./FooterComponent";
 export * from "./WatchYoutubeComponent";
 export * from "./GalleryComponent";
