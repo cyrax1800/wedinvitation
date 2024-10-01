@@ -16,7 +16,7 @@ export const EventDetailComponent: FC<EventDetailComponentProp> = ({
 }) => {
     return (
         <>
-            <div className={cx(styles.sectionContainerEventDetail, "mt-4")}>
+            <div className={cx(styles.sectionContainerEventDetail)}>
                 <div className={cx(styles.sectionOverlayEventDetail, "pb-4")}>
                     <span className={cx(styles.textTitle, "text-white")}>{dictionary.celebrate[language]}</span>
 

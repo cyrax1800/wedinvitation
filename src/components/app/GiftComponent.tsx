@@ -13,7 +13,7 @@ export const GiftComponent: FC<GiftComponentProp> = ({
 }) => {
     return (
         <>
-            <div className={cx(styles.sectionContainer, "bg-blue-50 mt-4 pb-4")}>
+            <div className={cx(styles.sectionContainer, "bg-blue-50 pb-4")}>
                 <span className={cx(styles.textTitle)}>{dictionary.gift[language]}</span>
                 <span className="text-center mt-2">{dictionary.giftDesc[language]}</span>
 

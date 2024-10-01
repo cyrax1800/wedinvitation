@@ -62,7 +62,8 @@
     @apply flex-col;
     @apply items-center;
     @apply w-full;
-    @apply px-8
+    @apply px-8;
+    @apply bg-white;
 }
 
 // .sectionContainerEventDetail {
@@ -79,17 +80,39 @@
 //     @apply w-full;
 // }
 
-.sectionContainerEventDetail {
+.sectionContainerEventDetailParallax {
     background-image: url("/event_bg3.jpg");
 
     @media (min-width: theme("screens.md")) {
         background-image: url("/event_bg3.jpg");
     }
 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    @supports (-webkit-touch-callout: none) {
+        display: none;
+    }
+}
+
+.sectionContainerEventDetail {
+    @supports not (-webkit-touch-callout: none) {
+        background-image: url("/event_bg3.jpg");
+
+        @media (min-width: theme("screens.md")) {
+            background-image: url("/event_bg3.jpg");
+        }
+
+        @apply bg-fixed;
+    }
+
     @apply bg-cover;
-    @apply bg-fixed;
     @apply bg-center;
-    @apply bg-no-repeat; 
+    @apply bg-no-repeat;
 
     @apply flex;
     @apply items-center;

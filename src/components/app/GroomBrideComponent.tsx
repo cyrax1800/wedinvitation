@@ -15,7 +15,7 @@ export const GroomBrideComponent: FC<GroomBrideComponentProp> = ({
 
     return (
         <>
-            <div className={cx(styles.sectionContainer, "relative")}>
+            <div className={cx(styles.sectionContainer, "relative pb-4")}>
                 <span className={cx(styles.textTitle, "z-10")}>{dictionary.groomandbride[language]}</span>
 
                 {/* <div className="flex flex-col md:grid md:grid-cols-2 mt-4 gap-16 w-full"> */}

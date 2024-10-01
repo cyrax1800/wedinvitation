@@ -19,6 +19,9 @@
       transform-origin: 50% bottom
   }
 } */
+body {
+  overscroll-behavior-y: none;
+}
 
 :root {
   --font-color-high-emphasis: #293036;

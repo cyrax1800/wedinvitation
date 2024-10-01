@@ -11,7 +11,7 @@ export const FooterComponent: FC<FooterComponentProp> = ({
     
     return (
         <>
-            <div className={cx(styles.footerContainer)}>
+            <div className={cx(styles.footerContainer, "bg-white")}>
                 <span className={cx(styles.textNormal1Default)}>Thank you</span>
                 <span className={cx(styles.textTitle, "mt-2")}>Michael & Sonia</span>
                 <span className="text-lg md:text-2xl mt-4">#SOmeonetoMichael</span>

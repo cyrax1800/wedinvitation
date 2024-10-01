@@ -135,6 +135,7 @@ export const HomeComponent: FC<HomeProp> = ({
                 {isOpen &&
                     <audio src="/theme.mp3" autoPlay loop />
                 }
+
                 <HeaderComponent language={language} />
                 <GroomBrideComponent language={language} />
                 <EventDetailComponent language={language} />
