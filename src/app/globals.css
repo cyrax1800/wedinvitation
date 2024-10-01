@@ -19,9 +19,7 @@
       transform-origin: 50% bottom
   }
 } */
-body {
-  overscroll-behavior-y: none;
-}
+body, html { overscroll-behavior: none; }
 
 :root {
   --font-color-high-emphasis: #293036;
