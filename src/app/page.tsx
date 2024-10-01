@@ -155,15 +155,13 @@ export default function Home() {
     resetSnackbar()
   }
 
-  console.log(data, isEditable)
+  // console.log(data, isEditable)
   return (
     <main className={cx(styles.textDefaultColor, tangerine.variable)}>
       <div className={cx("flex flex-col", !isOpen ? "h-screen overflow-hidden" : "")}>
-        {/* {isOpen &&
-          <>
-            <audio src="/theme.mp3" autoPlay loop />
-          </>
-        } */}
+        {isOpen &&
+          <audio src="/theme.mp3" autoPlay loop />
+        }
         <HeaderComponent language={language} />
         <GroomBrideComponent language={language} />
         <EventDetailComponent language={language} />

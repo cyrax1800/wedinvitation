@@ -52,12 +52,17 @@ export async function getData(to: String) {
     const lastName = (split.length > 1) ? split[1] : ""
     console.log(firstName + "+" + lastName)
 
+    const hasName = to.length == 0
+    const sheets = [
+        "Wishes!A2:B300"
+    ]
+    if (hasName) {
+        sheets.push("List Teman!A2:J300")
+    }
+
     const batchResp = (await client.spreadsheets.values.batchGet({
         spreadsheetId: id,
-        ranges: [
-            "Wishes!A2:B300",
-            "List Teman!A2:J300"
-        ],
+        ranges: sheets,
         valueRenderOption: 'FORMULA'
     }));
 
@@ -70,17 +75,19 @@ export async function getData(to: String) {
         rows: []
     }
 
-    batchResp.data.valueRanges!![1].values!!.forEach((e, index) => {
-        if (e[1].toLowerCase() === firstName && e[2].toLowerCase() === lastName) {
-            attendRes.canAttend = e[6] == '' ? undefined : e[6]
-            attendRes.isHolyMatrimony = e[7] == '' ? false : e[7]
-            attendRes.isReception = e[8] == '' ? false : e[8]
-            attendRes.guestcount = (Number(e[9]) == 0) ? 1 : Number(e[9])
-            attendRes.rowIndex = index
-            attendRes.rows = e
-            return
-        }
-    })
+    if (hasName) {
+        batchResp.data.valueRanges!![1].values!!.forEach((e, index) => {
+            if (e[1].toLowerCase() === firstName && e[2].toLowerCase() === lastName) {
+                attendRes.canAttend = e[6] == '' ? undefined : e[6]
+                attendRes.isHolyMatrimony = e[7] == '' ? false : e[7]
+                attendRes.isReception = e[8] == '' ? false : e[8]
+                attendRes.guestcount = (Number(e[9]) == 0) ? 1 : Number(e[9])
+                attendRes.rowIndex = index
+                attendRes.rows = e
+                return
+            }
+        })
+    }
 
     return {
         wishes: getWishes(batchResp.data.valueRanges!![0]),
