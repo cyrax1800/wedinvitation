@@ -29,7 +29,7 @@ export const GalleryComponent: FC<GalleryComponentProp> = ({
     }
     return (
         <>
-            <div className={cx(styles.sectionContainer)}>
+            <div className={cx(styles.sectionContainer, "bg-white")}>
                 <span className={cx(styles.textTitle, "text-center")}>{dictionary.oursMemories[language]}</span>
 
                 <div className={cx(styles.gridContainer)}>

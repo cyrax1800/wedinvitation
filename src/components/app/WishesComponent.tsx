@@ -49,7 +49,7 @@ export const WishesComponent: FC<WishesComponentProp> = ({
 
     return (
         <>
-            <div className={cx(styles.sectionContainer)}>
+            <div className={cx(styles.sectionContainer, "bg-white")}>
                 <span className={cx(styles.textTitle)}>{dictionary.wishes[language]}</span>
                 <span className="text-center mt-1">{dictionary.wishesDesc[language]}</span>
 

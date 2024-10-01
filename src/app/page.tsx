@@ -24,7 +24,7 @@ export default async function Home({ searchParams }: { searchParams: SearchParam
   return (
     <main className={cx(styles.textDefaultColor, tangerine.variable)}>
 
-      {/* <div className={cx(landingStyles.sectionContainerEventDetailParallax)}></div> */}
+      <div className={cx(landingStyles.sectionContainerEventDetailParallax)}></div>
       <HomeComponent propName={name} propLang={searchParams.lang ?? "en"} propData={res} />
     </main>
   );
