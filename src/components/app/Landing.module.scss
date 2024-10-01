@@ -65,15 +65,32 @@
     @apply px-8
 }
 
+// .sectionContainerEventDetail {
+//     background-image: url("/event_bg2.jpg");
+
+//     @media (min-width: theme("screens.md")) {
+//         background-image: url("/event_bg2.jpg");
+//     }
+//     background-size: cover;
+//     background-attachment: scroll;
+//     background-position: center;
+//     @apply flex;
+//     @apply items-center;
+//     @apply w-full;
+// }
+
 .sectionContainerEventDetail {
-    background-image: url("/event_bg2.jpg");
+    background-image: url("/event_bg3.jpg");
 
     @media (min-width: theme("screens.md")) {
-        background-image: url("/event_bg2.jpg");
+        background-image: url("/event_bg3.jpg");
     }
-    background-size: cover;
-    background-attachment: scroll;
-    background-position: center;
+
+    @apply bg-cover;
+    @apply bg-fixed;
+    @apply bg-center;
+    @apply bg-no-repeat; 
+
     @apply flex;
     @apply items-center;
     @apply w-full;
@@ -82,7 +99,7 @@
 .sectionOverlayEventDetail {
     @apply flex;
     @apply flex-col;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.3);
     @apply h-full;
     @apply items-center;
     @apply pt-10;
