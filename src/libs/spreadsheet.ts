@@ -52,7 +52,7 @@ export async function getData(to: String) {
     const lastName = (split.length > 1) ? split[1] : ""
     console.log(firstName + "+" + lastName)
 
-    const hasName = to.length == 0
+    const hasName = to.length != 0
     const sheets = [
         "Wishes!A2:B300"
     ]
@@ -78,7 +78,8 @@ export async function getData(to: String) {
     if (hasName) {
         batchResp.data.valueRanges!![1].values!!.forEach((e, index) => {
             if (e[1].toLowerCase() === firstName && e[2].toLowerCase() === lastName) {
-                attendRes.canAttend = e[6] == '' ? undefined : e[6]
+                console.log(e[6] === "")
+                attendRes.canAttend = e[6] === "" ? undefined : Boolean(e[6])
                 attendRes.isHolyMatrimony = e[7] == '' ? false : e[7]
                 attendRes.isReception = e[8] == '' ? false : e[8]
                 attendRes.guestcount = (Number(e[9]) == 0) ? 1 : Number(e[9])
@@ -88,6 +89,8 @@ export async function getData(to: String) {
             }
         })
     }
+
+    console.log(attendRes)
 
     return {
         wishes: getWishes(batchResp.data.valueRanges!![0]),

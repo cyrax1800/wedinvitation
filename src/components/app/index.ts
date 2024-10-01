@@ -10,3 +10,4 @@ export * from "./WishesComponent";
 export * from "./FooterComponent";
 export * from "./WatchYoutubeComponent";
 export * from "./GalleryComponent";
+export * from "./HomeComponent";
