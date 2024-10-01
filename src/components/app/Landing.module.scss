@@ -1,9 +1,10 @@
 .headerContainer {
-    background-image: url("/landing_bg2_small.webp");
+    background-image: url("/landing_bg.jpg");
 
     @media (min-width: theme("screens.md")) {
-        background-image: url("/landing_bg2.webp");
+        background-image: url("/landing_bg.jpg");
     }
+    height: 80vh;
     background-size: cover;
     background-attachment: scroll;
     background-position: center;
@@ -11,10 +12,16 @@
 }
 
 .headerOverlay {
-    @apply pt-8;
+    @apply flex;
+    @apply flex-col;
     background-color: rgba(0, 0, 0, 0.5);
     @apply h-full;
     @apply w-full;
+}
+
+.headerContent {
+    height: 50vh;
+    justify-content: center;
 }
 
 .sectionContainer {

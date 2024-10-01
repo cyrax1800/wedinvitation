@@ -100,7 +100,7 @@ export const WishesComponent: FC<WishesComponentProp> = ({
                     }
                 </div>
 
-                {wished.length > 0 && (
+                {wishes.length > 0 && (
                     <Pagination className="mt-4" selectedNumber={page} totalPages={Math.ceil(wishes.length / 6)} onClickPagination={(selectedPage) => {
                         setPage(selectedPage)
                     }}></Pagination>

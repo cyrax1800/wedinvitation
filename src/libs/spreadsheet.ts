@@ -58,7 +58,7 @@ export async function getData(to: String) {
             "Wishes!A2:B1000",
             "List Teman!A2:J1000"
         ],
-        valueRenderOption: 'FORMATTED_VALUE'
+        valueRenderOption: 'FORMULA'
     }));
 
     var attendRes: Attendance = {

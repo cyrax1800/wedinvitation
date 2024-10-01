@@ -79,6 +79,10 @@ export default function Home() {
   const submitWishesCaller = async (name: string, wish: string) => {
     const res = await submitWishes(name, wish)
     if (res == 200) {
+      const newData = { ...data }
+      newData.wishes = [{ name, wish }, ...data.wishes]
+      setData(newData)
+
       setSnackbarProp({
         type: "success",
         id: "",
@@ -105,14 +109,14 @@ export default function Home() {
       guestCount,
       data.attend,
     )
-    const newData = { ...data }
-    newData.attend.canAttend = isAttended
-    newData.attend.isHolyMatrimony = isHolyMatrimony
-    newData.attend.isReception = isReception
-    newData.attend.guestcount = guestCount
-    setData(newData)
 
     if (res == 200) {
+      const newData = { ...data }
+      newData.attend.canAttend = isAttended
+      newData.attend.isHolyMatrimony = isHolyMatrimony
+      newData.attend.isReception = isReception
+      newData.attend.guestcount = guestCount
+      setData(newData)
       setSnackbarProp({
         type: "success",
         id: "",
@@ -130,15 +134,15 @@ export default function Home() {
   return (
     <main className={cx(styles.textDefaultColor, tangerine.variable)}>
       <div className={cx("flex flex-col", !isOpen ? "h-screen overflow-hidden" : "")}>
-        {isOpen &&
+        {/* {isOpen &&
           <>
             <audio src="/theme.mp3" autoPlay loop />
           </>
-        }
+        } */}
         <HeaderComponent />
         <GroomBrideComponent />
         <EventDetailComponent />
-        <StoriesComponent />
+        {/* <StoriesComponent /> */}
         <GiftComponent />
         {
           (!data.isGuest && isEditable) && (<RSVPComponent
