@@ -3,6 +3,7 @@
 import { FC } from "react";
 import cx from "classnames";
 import styles from "./Landing.module.scss";
+import React from "react";
 
 interface EventDetailComponentProp {
 }
@@ -11,11 +12,11 @@ export const EventDetailComponent: FC<EventDetailComponentProp> = ({
 }) => {
     return (
         <>
-            <div className={cx(styles.sectionContainer)}>
+            <div className={cx(styles.sectionContainer, "bg-blue-50 mt-4 pb-4")}>
                 <span className={cx(styles.textTitle)}>Celebrate Our Love</span>
 
                 <div className="flex flex-col md:grid md:grid-cols-2 mt-4 gap-4">
-                    <div className={cx(styles.boxContainer, "items-center")}>
+                    <div className={cx(styles.boxContainerWhite, "items-center")}>
                         <span className={cx(styles.textTitle2)}>Holy Matrimony</span>
                         <span className="mt-12">Monday, 11 November 2024</span>
                         <span >11.00 WIB - 13.00 WIB</span>
@@ -32,7 +33,7 @@ export const EventDetailComponent: FC<EventDetailComponentProp> = ({
                     </div>
 
 
-                    <div className={cx(styles.boxContainer, "items-center")}>
+                    <div className={cx(styles.boxContainerWhite, "items-center")}>
                         <span className={cx(styles.textTitle2)}>Reception</span>
                         <span className="mt-12">Monday, 11 November 2024</span>
                         <span >18.30 WIB - Selesai</span>

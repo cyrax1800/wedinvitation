@@ -23,6 +23,7 @@ import { tangerine } from "./font";
 import { Data, getData, submitRSVP, submitWishes } from "@/libs/spreadsheet";
 import { SnackbarWrapper } from "@/components/snackbar/SnackbarWrapper";
 import { SnackbarProps } from "@/components/snackbar";
+import Image from 'next/image'
 
 export default function Home() {
   const searchParams = useSearchParams()
@@ -48,7 +49,15 @@ export default function Home() {
     }
   })
 
+  const [isDesktop, setIsDesktop] = useState(false);
+
   useEffect(() => {
+
+    setIsDesktop(window.matchMedia("(min-width: 768px)").matches);
+    window
+      .matchMedia("(min-width: 768px)")
+      .addEventListener("change", (e) => { setIsDesktop(e.matches) });
+
     const name = searchParams.get('to') ?? "Tamu"
     setName(name)
 
@@ -140,10 +149,13 @@ export default function Home() {
           </>
         } */}
         <HeaderComponent />
-        <GroomBrideComponent />
+        <GroomBrideComponent isDesktop={isDesktop} />
         <EventDetailComponent />
         {/* <StoriesComponent /> */}
-        <GiftComponent />
+        <div className="flex w-full h-[75vh]">
+          <Image className="object-cover w-full h-full" src={"/rsvp_bg.jpg"} alt={""} sizes="100wv" width={512} height={192} />
+          <div className={cx(landingStyles.sectionOverlayRSVP)}/>
+        </div>
         {
           (!data.isGuest && isEditable) && (<RSVPComponent
             guestName={name}
@@ -180,6 +192,7 @@ export default function Home() {
           console.log("Wishes Submited")
           submitWishesCaller(name, wishes)
         }} />
+        <GiftComponent />
 
         <GalleryComponent />
 
@@ -187,7 +200,7 @@ export default function Home() {
         <FooterComponent />
       </div>
       {
-        !isOpen && <div className="animate-in fade-in duration-500 flex justify-center bg-white w-full h-full fixed top-0 bottom-0 left-0 right-0">
+        !isOpen && <div className="animate-in fade-in duration-500 flex justify-center bg-white w-full h-full fixed top-0 bottom-0 left-0 right-0 z-50">
           <div className={cx("flex flex-col self-center text-center", landingStyles.textNormal3Default)}>
             <span className={cx(landingStyles.textTitle)}>MiracleWithSonia</span>
             <span className={cx("mt-12", landingStyles.textNormal1Default)}>Dear, <b className="text-blue-900">{name}</b></span>

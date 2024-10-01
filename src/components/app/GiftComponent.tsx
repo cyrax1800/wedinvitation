@@ -1,6 +1,7 @@
 import { FC } from "react";
 import cx from "classnames";
 import styles from "./Landing.module.scss";
+import React from "react";
 
 interface GiftComponentProp {
 }
@@ -9,12 +10,12 @@ export const GiftComponent: FC<GiftComponentProp> = ({
 }) => {
     return (
         <>
-            <div className={cx(styles.sectionContainer)}>
+            <div className={cx(styles.sectionContainer, "bg-blue-50 mt-4 pb-4")}>
                 <span className={cx(styles.textTitle)}>Wedding Gift</span>
                 <span className="text-center mt-2">Your presence and prayers are the greatest wedding gifts we could ever ask for. However, if giving is a sign of love, we are happy to receive it.</span>
 
-                <div className="flex flex-col md:grid md:grid-cols-2 mt-4 gap-8 w-full">
-                    <div className={cx(styles.boxContainer, "items-center")}>
+                <div className="flex flex-col md:grid md:grid-cols-2 mt-4 gap-8 w-full justify-items-center">
+                    <div className={cx(styles.boxContainerWhite, "items-center")}>
                         <span className={cx(styles.textTitle3)}>Michael</span>
                         <span className="mt-4 font-bold">BCA</span>
                         <span className={cx(styles.textNormal1Default, "flex", "items-center")}>
@@ -25,7 +26,7 @@ export const GiftComponent: FC<GiftComponentProp> = ({
                         </span>
                     </div>
 
-                    <div className={cx(styles.boxContainer, "items-center")}>
+                    <div className={cx(styles.boxContainerWhite, "items-center")}>
                         <span className={cx(styles.textTitle3)}>Sonia Christina</span>
                         <span className="mt-4 font-bold">BCA</span>
                         <span className={cx(styles.textNormal1Default, "flex", "items-center")}>

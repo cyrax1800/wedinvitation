@@ -33,6 +33,29 @@
     @apply px-8
 }
 
+.sectionContainerRSVP {
+    background-image: url("/landing_bg.jpg");
+
+    @media (min-width: theme("screens.md")) {
+        background-image: url("/landing_bg.jpg");
+    }
+    background-size: cover;
+    background-attachment: scroll;
+    background-position: center;
+
+    @apply flex;
+    @apply flex-col;
+    @apply items-center;
+    @apply w-full;
+}
+
+.sectionOverlayRSVP {
+    background-color: rgba(0, 0, 0, 0.5);
+    @apply w-full;
+    height: 75vh;
+    @apply absolute;
+}
+
 .footerContainer {
     @apply pt-10;
     @apply flex;
@@ -41,15 +64,70 @@
     @apply w-full;
 }
 
+.profileBoxContainer1 {
+    @apply bg-neutral-100;
+    @apply rounded-md;
+    @apply shadow-md;
+    z-index: 5;
+
+    @media (min-width: theme("screens.md")) {
+        @apply w-3/5;
+        @apply p-8;
+        margin: 0 0 0 0;
+        margin-left: -1rem;
+        @apply text-start;
+    }
+    @media (min-width: theme("screens.lg")) {
+        @apply w-1/2;
+    }
+    @apply mx-4;
+    @apply p-4;
+    margin-top: -1rem;
+    @apply text-center;
+}
+
+.profileBoxContainer2 {
+    @apply bg-neutral-100;
+    @apply rounded-md;
+    @apply shadow-md;
+    z-index: 5;
+
+    @media (min-width: theme("screens.md")) {
+        @apply w-3/5;
+        @apply p-8;
+        margin: 0 0 0 0;
+        margin-right: -1rem;
+        @apply text-end;
+    }
+
+    @media (min-width: theme("screens.lg")) {
+        @apply w-1/2;
+    }
+    @apply mx-4;
+    @apply p-4;
+    margin-top: -1rem;
+    @apply text-center;
+}
+
 .boxContainer {
-    @apply border-2;
-    @apply border-dashed;
-    @apply border-blue-900;
-    @apply rounded-3xl;
+    @apply bg-neutral-100;
+    @apply rounded-md;
+    @apply shadow-md;
     @apply p-4;
     @apply flex;
     @apply flex-col;
     @apply w-full;
+}
+
+.boxContainerWhite {
+    @apply bg-white;
+    @apply rounded-md;
+    @apply shadow-md;
+    @apply p-4;
+    @apply flex;
+    @apply flex-col;
+    @apply w-full;
+    @apply max-w-xl;
 }
 
 .textTitle {
