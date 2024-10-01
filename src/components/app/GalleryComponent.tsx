@@ -5,11 +5,14 @@ import cx from "classnames";
 import styles from "./Landing.module.scss";
 import Image from 'next/image'
 import React from "react";
+import { dictionary } from "@/libs/language";
 
 interface GalleryComponentProp {
+    language: string
 }
 
 export const GalleryComponent: FC<GalleryComponentProp> = ({
+    language
 }) => {
     const totalItem = 22;
 
@@ -18,7 +21,7 @@ export const GalleryComponent: FC<GalleryComponentProp> = ({
         for (let i = 1; i <= totalItem; i++) {
             content.push(
                 <div key={i} className="w-full h-auto">
-                    <Image className="object-contain h-auto" src={"/image_" + i + ".webp"} alt={""}  width={512} height={512} quality={70} />
+                    <Image className="object-contain h-auto" src={"/image_" + i + ".webp"} alt={""} width={512} height={512} quality={70} />
                 </div>
             )
         }
@@ -27,7 +30,7 @@ export const GalleryComponent: FC<GalleryComponentProp> = ({
     return (
         <>
             <div className={cx(styles.sectionContainer)}>
-                <span className={cx(styles.textTitle, "text-center")}>Captured Memories</span>
+                <span className={cx(styles.textTitle, "text-center")}>{dictionary.oursMemories[language]}</span>
 
                 <div className={cx(styles.gridContainer)}>
                     {content()}

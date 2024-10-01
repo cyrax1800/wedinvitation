@@ -6,9 +6,20 @@ import { NumberBox2 } from './NumberBox2';
 interface TimeProps {
     countDownDuration: number,
     className?: string,
+    dText?: string,
+    hText?: string,
+    mText?: string,
+    sText?: string,
 }
 
-export const TimerContainer2 = ({ countDownDuration, className }: TimeProps) => {
+export const TimerContainer2 = ({
+    countDownDuration,
+    className,
+    dText = "Days",
+    hText = "Hours",
+    mText = "Minutes",
+    sText = "Seconds",
+}: TimeProps) => {
     let countDownDate = new Date().getTime() + countDownDuration;
     var now = new Date().getTime();
     var difference = countDownDate - now;
@@ -53,13 +64,13 @@ export const TimerContainer2 = ({ countDownDuration, className }: TimeProps) => 
     return (
         <div className={className}>
             <div className="py-6 flex items-center justify-between md:mt-2 rounded-xl md:px-6 md:py-8 ">
-                <NumberBox2 id={`days`} current={time[0]} unit="Days" />
+                <NumberBox2 id={`days`} current={time[0]} unit={dText} />
                 <span className="text-5xl -mt-12 md:-mt-12 inline-block md:text-7xl font-normal text-white-800 ">:</span>
-                <NumberBox2 id={`hours`} current={time[1]} unit="Hours" />
+                <NumberBox2 id={`hours`} current={time[1]} unit={hText} />
                 <span className="text-5xl -mt-12 md:-mt-12 inline-block md:text-7xl font-normal text-white-800 ">:</span>
-                <NumberBox2 id={`minutes`} current={time[2]} unit="Minutes" />
+                <NumberBox2 id={`minutes`} current={time[2]} unit={mText} />
                 <span className="text-5xl -mt-12 md:-mt-12 inline-block md:text-7xl font-normal text-white-800 ">:</span>
-                <NumberBox2 id={`seconds`} current={time[3]} unit="Seconds" />
+                <NumberBox2 id={`seconds`} current={time[3]} unit={sText} />
             </div>
 
         </div>

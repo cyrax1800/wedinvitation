@@ -3,10 +3,13 @@ import cx from "classnames";
 import styles from "./Landing.module.scss";
 import { Pagination } from "../pagination";
 import { WishesItem } from "@/libs/spreadsheet";
+import { dictionary } from "@/libs/language";
+import React from "react";
 
 interface WishesComponentProp {
     guestName?: string,
     wishes: WishesItem[],
+    language: string,
     onSubmit?: (guestName: string, wishes: string) => void;
 }
 
@@ -16,6 +19,7 @@ const FORM_ERROR_STATE = {
 };
 
 export const WishesComponent: FC<WishesComponentProp> = ({
+    language,
     guestName = "John Doe",
     wishes,
     onSubmit
@@ -46,8 +50,8 @@ export const WishesComponent: FC<WishesComponentProp> = ({
     return (
         <>
             <div className={cx(styles.sectionContainer)}>
-                <span className={cx(styles.textTitle)}>Wishes</span>
-                <span className="text-center mt-1">We would love to hear from you</span>
+                <span className={cx(styles.textTitle)}>{dictionary.wishes[language]}</span>
+                <span className="text-center mt-1">{dictionary.wishesDesc[language]}</span>
 
                 <div className="flex flex-col mt-8 w-full ">
                     <input
@@ -68,7 +72,7 @@ export const WishesComponent: FC<WishesComponentProp> = ({
                     <textarea className="border rounded-xl py-2 px-4 mt-2"
                         name="wishes"
                         form="wishes"
-                        placeholder="Wishes"
+                        placeholder={dictionary.wishes[language]}
                         rows={6}
                         required
                         maxLength={480}
@@ -83,7 +87,7 @@ export const WishesComponent: FC<WishesComponentProp> = ({
                 </div>
                 <button className={cx(styles.buttonDefault)} onClick={() => {
                     validateAndSubmit(name, wished)
-                }}>Send</button>
+                }}>{dictionary.send[language]}</button>
 
 
                 <div className={cx(styles.gridContainer)}>

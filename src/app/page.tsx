@@ -24,6 +24,7 @@ import { Data, getData, submitRSVP, submitWishes } from "@/libs/spreadsheet";
 import { SnackbarWrapper } from "@/components/snackbar/SnackbarWrapper";
 import { SnackbarProps } from "@/components/snackbar";
 import Image from 'next/image'
+import { dictionary } from "@/libs/language";
 
 export default function Home() {
   const searchParams = useSearchParams()
@@ -34,7 +35,9 @@ export default function Home() {
     id: "",
     textContent: ""
   });
+  const [snackBarTimeout, setSnackBarTimeout] = useState<NodeJS.Timeout | null>(null)
   const [name, setName] = useState("Tamu")
+  const [language, setLanguage] = useState("en")
 
   const [data, setData] = useState<Data>({
     wishes: [],
@@ -61,6 +64,8 @@ export default function Home() {
     const name = searchParams.get('to') ?? "Tamu"
     setName(name)
 
+    setLanguage(searchParams.get('lang') ?? "en")
+
     const caller = async () => {
       const res = await getData(name)
       setIsEditable(res.attend.canAttend == null)
@@ -69,23 +74,29 @@ export default function Home() {
     caller()
   }, [])
 
-  useEffect(() => {
-    var delaySnackbar = setInterval(() => {
+  const resetSnackbar = () => {
+    setSnackBarTimeout(setTimeout(() => {
       setSnackbarProp({
         type: "general",
         id: "",
         textContent: ""
       })
-      clearInterval(delaySnackbar);
-    }, 3000)
+    }, 3000))
+  }
 
-    return () => {
-      clearInterval(delaySnackbar);
+  const clearTimeoutSnackbar = () => {
+    if (snackBarTimeout != null) {
+      setSnackbarProp({
+        type: "general",
+        id: "",
+        textContent: ""
+      })
+      clearTimeout(snackBarTimeout as NodeJS.Timeout)
     }
-
-  }, [snackBarProp]);
+  }
 
   const submitWishesCaller = async (name: string, wish: string) => {
+    clearTimeoutSnackbar()
     const res = await submitWishes(name, wish)
     if (res == 200) {
       const newData = { ...data }
@@ -104,6 +115,7 @@ export default function Home() {
         textContent: "Please try again."
       })
     }
+    resetSnackbar()
   }
 
   const submitRSVPCaller = async (
@@ -111,6 +123,7 @@ export default function Home() {
     isHolyMatrimony: boolean,
     isReception: boolean,
     guestCount: number) => {
+    clearTimeoutSnackbar()
     const res = await submitRSVP(
       isAttended,
       isHolyMatrimony,
@@ -131,6 +144,7 @@ export default function Home() {
         id: "",
         textContent: "Success, Thank you"
       })
+      setIsEditable(false)
     } else {
       setSnackbarProp({
         type: "error",
@@ -138,8 +152,10 @@ export default function Home() {
         textContent: "Please try again."
       })
     }
+    resetSnackbar()
   }
 
+  console.log(data, isEditable)
   return (
     <main className={cx(styles.textDefaultColor, tangerine.variable)}>
       <div className={cx("flex flex-col", !isOpen ? "h-screen overflow-hidden" : "")}>
@@ -148,16 +164,18 @@ export default function Home() {
             <audio src="/theme.mp3" autoPlay loop />
           </>
         } */}
-        <HeaderComponent />
-        <GroomBrideComponent isDesktop={isDesktop} />
-        <EventDetailComponent />
+        <HeaderComponent language={language} />
+        <GroomBrideComponent language={language} />
+        <EventDetailComponent language={language} />
         {/* <StoriesComponent /> */}
         <div className="flex w-full h-[75vh]">
           <Image className="object-cover w-full h-full" src={"/rsvp_bg.webp"} alt={""} width={512} height={192} />
-          <div className={cx(landingStyles.sectionOverlayRSVP)}/>
+          <div className={cx(landingStyles.sectionOverlayRSVP)} />
         </div>
+
         {
           (!data.isGuest && isEditable) && (<RSVPComponent
+            language={language}
             guestName={name}
             isAttended={data.attend.canAttend ?? true}
             isHolyMatrimony={data.attend.isHolyMatrimony}
@@ -177,42 +195,58 @@ export default function Home() {
             }} />)
         }
         {
-          (!data.isGuest && data.attend.canAttend !== undefined && !isEditable) && (<RSVPSubmitedComponent guestName={name} onClick={() => {
-            setIsEditable(true)
-          }} />)
+          (!data.isGuest && data.attend.canAttend !== undefined && !isEditable) && (<RSVPSubmitedComponent
+            language={language}
+            guestName={name}
+            onClick={() => {
+              setIsEditable(true)
+            }} />)
         }
 
         {
           (data.isGuest) && (
-            <RSVPGuestComponent guestName={name} />
+            <RSVPGuestComponent guestName={name} language={language} />
           )
         }
 
-        <WishesComponent wishes={data?.wishes ?? []} guestName={name} onSubmit={(name, wishes) => {
+        <WishesComponent language={language} wishes={data?.wishes ?? []} guestName={name} onSubmit={(name, wishes) => {
           console.log("Wishes Submited")
           submitWishesCaller(name, wishes)
         }} />
-        <GiftComponent />
+        <GiftComponent language={language} />
 
-        <GalleryComponent />
+        <GalleryComponent language={language} />
 
-        <WatchYoutubeComponent />
+        <WatchYoutubeComponent language={language} />
         <FooterComponent />
       </div>
       {
-        !isOpen && <div className="animate-in fade-in duration-500 flex justify-center bg-white w-full h-full fixed top-0 bottom-0 left-0 right-0 z-50">
+        !isOpen && <div className="animate-in fade-in duration-500 flex justify-center bg-white w-full h-full fixed top-0 bottom-0 left-0 right-0 z-40">
           <div className={cx("flex flex-col self-center text-center", landingStyles.textNormal3Default)}>
-            <span className={cx(landingStyles.textTitle)}>MiracleWithSonia</span>
-            <span className={cx("mt-12", landingStyles.textNormal1Default)}>Dear, <b className="text-blue-500">{name}</b></span>
-            <span className="mt-4">You Are Invited!</span>
-            <span>The Wedding of</span>
-            <span className={cx(landingStyles.textTitle2)}>Michael and Sonia</span>
+            <span className={cx(landingStyles.textTitle)}>#SOmeonetoMichael</span>
+            <span className={cx("mt-12", landingStyles.textNormal1Default)}>{dictionary.greetings[language]} <b className="text-blue-500">{name}</b>,</span>
+            <span className="mt-4">{dictionary.invited[language]}</span>
+            <span>{dictionary.weddingOf[language]}</span>
+            <span className={cx(landingStyles.textTitle2, "mt-4")}>{dictionary.groombridename[language]}</span>
             <button className={cx(landingStyles.buttonDefault, "mt-8")} onClick={() => {
               setIsOpen(true)
-            }}>Open</button>
+            }}>{dictionary.open[language]}</button>
           </div>
         </div>
       }
+
+      <div className="fixed top-2 right-2 z-50">
+        <select className="flex border-2 py-1 px-4 text-left"
+          id="language"
+          name="language"
+          value={language}
+          onChange={(e) => {
+            setLanguage(e.target.value);
+          }}>
+          <option value="en">English</option>
+          <option value="id">Bahasa</option>
+        </select>
+      </div>
 
       {snackBarProp.textContent &&
         <SnackbarWrapper type={snackBarProp.type} id={snackBarProp.id} textContent={snackBarProp.textContent} />

@@ -55,8 +55,8 @@ export async function getData(to: String) {
     const batchResp = (await client.spreadsheets.values.batchGet({
         spreadsheetId: id,
         ranges: [
-            "Wishes!A2:B1000",
-            "List Teman!A2:J1000"
+            "Wishes!A2:B300",
+            "List Teman!A2:J300"
         ],
         valueRenderOption: 'FORMULA'
     }));
@@ -72,10 +72,10 @@ export async function getData(to: String) {
 
     batchResp.data.valueRanges!![1].values!!.forEach((e, index) => {
         if (e[1].toLowerCase() === firstName && e[2].toLowerCase() === lastName) {
-            attendRes.canAttend = e[6] == '' ? undefined : (e[6] == 'TRUE' ? true : false)
-            attendRes.isHolyMatrimony = e[7] == '' ? false : (e[7] == 'TRUE' ? true : false)
-            attendRes.isReception = e[8] == '' ? false : (e[8] == 'TRUE' ? true : false)
-            attendRes.guestcount = Number(e[9])
+            attendRes.canAttend = e[6] == '' ? undefined : e[6]
+            attendRes.isHolyMatrimony = e[7] == '' ? false : e[7]
+            attendRes.isReception = e[8] == '' ? false : e[8]
+            attendRes.guestcount = (Number(e[9]) == 0) ? 1 : Number(e[9])
             attendRes.rowIndex = index
             attendRes.rows = e
             return
@@ -83,13 +83,13 @@ export async function getData(to: String) {
     })
 
     return {
-        wishes: await getWishes(batchResp.data.valueRanges!![0]),
+        wishes: getWishes(batchResp.data.valueRanges!![0]),
         isGuest: attendRes.rowIndex == 9999,
         attend: attendRes
     }
 }
 
-async function getWishes(wishResponse: sheets_v4.Schema$ValueRange) {
+function getWishes(wishResponse: sheets_v4.Schema$ValueRange) {
     if (wishResponse.values == undefined) return []
     const wishesRes: WishesItem[] = wishResponse.values!!.map((value, index) => {
         return {

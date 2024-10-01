@@ -2,17 +2,20 @@ import { FC } from "react";
 import cx from "classnames";
 import styles from "./Landing.module.scss";
 import React from "react";
+import { dictionary } from "@/libs/language";
 
 interface GiftComponentProp {
+    language: string
 }
 
 export const GiftComponent: FC<GiftComponentProp> = ({
+    language
 }) => {
     return (
         <>
             <div className={cx(styles.sectionContainer, "bg-blue-50 mt-4 pb-4")}>
-                <span className={cx(styles.textTitle)}>Wedding Gift</span>
-                <span className="text-center mt-2">Your presence and prayers are the greatest wedding gifts we could ever ask for. However, if giving is a sign of love, we are happy to receive it.</span>
+                <span className={cx(styles.textTitle)}>{dictionary.gift[language]}</span>
+                <span className="text-center mt-2">{dictionary.giftDesc[language]}</span>
 
                 <div className="flex flex-col md:grid md:grid-cols-2 mt-4 gap-8 w-full justify-items-center">
                     <div className={cx(styles.boxContainerWhite, "items-center")}>

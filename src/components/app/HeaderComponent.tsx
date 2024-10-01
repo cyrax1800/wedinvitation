@@ -6,11 +6,14 @@ import { TimerContainer2 } from "../timer/TimerContainer2";
 import { tangerine } from "@/app/font";
 import Image from 'next/image'
 import React from "react";
+import { dictionary } from "@/libs/language";
 
 interface HeaderProp {
+    language: string
 }
 
 export const HeaderComponent: FC<HeaderProp> = ({
+    language
 }) => {
 
     return (
@@ -25,7 +28,7 @@ export const HeaderComponent: FC<HeaderProp> = ({
                             MS
                         </div> */}
                         <span className="text-lg md:text-xl mt-8">
-                            The Wedding Of
+                            {dictionary.weddingOf[language]}
                         </span>
                         <span className={cx(styles.textTitle, "mt-4")}>
                             Michael & Sonia
@@ -37,6 +40,10 @@ export const HeaderComponent: FC<HeaderProp> = ({
 
                     <div className="flex flex-col w-full flex-1 justify-end items-center">
                         <TimerContainer2
+                            dText={dictionary.days[language]}
+                            hText={dictionary.hours[language]}
+                            mText={dictionary.minutes[language]}
+                            sText={dictionary.seconds[language]}
                             countDownDuration={new Date(2024, 10, 11, 0, 0, 0).getTime() - new Date().getTime()}
                         />
                         <div className="w-12 h-12">
