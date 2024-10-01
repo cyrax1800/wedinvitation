@@ -1,8 +1,8 @@
 .headerContainer {
-    background-image: url("/landing_bg.jpg");
+    background-image: url("/landing_bg2.webp");
 
     @media (min-width: theme("screens.md")) {
-        background-image: url("/landing_bg.jpg");
+        background-image: url("/landing_bg2.webp");
     }
     height: 80vh;
     background-size: cover;
@@ -31,22 +31,6 @@
     @apply items-center;
     @apply w-full;
     @apply px-8
-}
-
-.sectionContainerRSVP {
-    background-image: url("/landing_bg.jpg");
-
-    @media (min-width: theme("screens.md")) {
-        background-image: url("/landing_bg.jpg");
-    }
-    background-size: cover;
-    background-attachment: scroll;
-    background-position: center;
-
-    @apply flex;
-    @apply flex-col;
-    @apply items-center;
-    @apply w-full;
 }
 
 .sectionOverlayRSVP {
@@ -188,7 +172,7 @@
     @apply px-6;
     @apply justify-center;
     @apply items-center;
-    @apply bg-blue-900;
+    @apply bg-blue-500;
     @apply text-white;
 }
 

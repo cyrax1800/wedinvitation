@@ -153,7 +153,7 @@ export default function Home() {
         <EventDetailComponent />
         {/* <StoriesComponent /> */}
         <div className="flex w-full h-[75vh]">
-          <Image className="object-cover w-full h-full" src={"/rsvp_bg.jpg"} alt={""} sizes="100wv" width={512} height={192} />
+          <Image className="object-cover w-full h-full" src={"/rsvp_bg.webp"} alt={""} width={512} height={192} />
           <div className={cx(landingStyles.sectionOverlayRSVP)}/>
         </div>
         {
@@ -203,7 +203,7 @@ export default function Home() {
         !isOpen && <div className="animate-in fade-in duration-500 flex justify-center bg-white w-full h-full fixed top-0 bottom-0 left-0 right-0 z-50">
           <div className={cx("flex flex-col self-center text-center", landingStyles.textNormal3Default)}>
             <span className={cx(landingStyles.textTitle)}>MiracleWithSonia</span>
-            <span className={cx("mt-12", landingStyles.textNormal1Default)}>Dear, <b className="text-blue-900">{name}</b></span>
+            <span className={cx("mt-12", landingStyles.textNormal1Default)}>Dear, <b className="text-blue-500">{name}</b></span>
             <span className="mt-4">You Are Invited!</span>
             <span>The Wedding of</span>
             <span className={cx(landingStyles.textTitle2)}>Michael and Sonia</span>

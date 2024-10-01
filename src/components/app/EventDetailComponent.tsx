@@ -18,9 +18,9 @@ export const EventDetailComponent: FC<EventDetailComponentProp> = ({
                 <div className="flex flex-col md:grid md:grid-cols-2 mt-4 gap-4">
                     <div className={cx(styles.boxContainerWhite, "items-center")}>
                         <span className={cx(styles.textTitle2)}>Holy Matrimony</span>
-                        <span className="mt-12">Monday, 11 November 2024</span>
+                        <span className="mt-12"><b>Monday, 11 November 2024</b></span>
                         <span >11.00 WIB - 13.00 WIB</span>
-                        <span className="mt-12">Wihara Ekayana Arama</span>
+                        <span className="mt-12"><b>Wihara Ekayana Arama</b></span>
                         <span className="text-center">Jl. Mangga 2 No.8, RT.8/RW.8, Duri Kepa, Kec. Kb. Jeruk, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11510</span>
                         <a className={cx(styles.buttonDefault, "mt-8")} href="https://maps.app.goo.gl/yfa7jZDFP1TcnTAUA" target="_blank">
                             <div className="w-4 h-4 mr-2">
@@ -35,9 +35,9 @@ export const EventDetailComponent: FC<EventDetailComponentProp> = ({
 
                     <div className={cx(styles.boxContainerWhite, "items-center")}>
                         <span className={cx(styles.textTitle2)}>Reception</span>
-                        <span className="mt-12">Monday, 11 November 2024</span>
+                        <span className="mt-12"><b>Monday, 11 November 2024</b></span>
                         <span >18.30 WIB - Selesai</span>
-                        <span className="mt-12">Neo Soho Residence 9th Floor</span>
+                        <span className="mt-12"><b>Ballroom Neo Soho Residence 9th Floor</b></span>
                         <span className="text-center">Letjen S. Parman St No.28, RT.3/RW.5, South Tanjung Duren, Grogol petamburan, West Jakarta City, Jakarta 11470</span>
                         <a className={cx(styles.buttonDefault, "mt-8")} href="https://maps.app.goo.gl/Aq4wx8QRnm1b3FE17" target="_blank">
                             <div className="w-4 h-4 mr-2">
@@ -46,6 +46,12 @@ export const EventDetailComponent: FC<EventDetailComponentProp> = ({
                                 </svg>
                             </div>
                             Get Direction
+                        </a>
+
+                        <a className={cx(styles.buttonDefault, "mt-8")} href="https://drive.google.com/drive/folders/1XTHuSyBeU5l6zcGY25LD5o0tcFgKUs1h?usp=sharing" target="_blank">
+                            {/* <div className="w-4 h-4 mr-2">
+                            </div> */}
+                            Access to venue
                         </a>
                     </div>
                 </div>

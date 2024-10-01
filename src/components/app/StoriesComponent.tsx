@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import cx from "classnames";
 import styles from "./Landing.module.scss";
+import React from "react";
 
 interface StoriesComponentProp {
 }

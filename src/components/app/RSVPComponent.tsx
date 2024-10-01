@@ -32,7 +32,7 @@ export const RSVPComponent: FC<RSVPComponentProp> = ({
         <>
             <div className={cx(styles.sectionContainer, "mt-[-10rem] z-10")}>
                 <div className="flex flex-col bg-white p-8 rounded-lg shadow-xl">
-                    <span className={cx(styles.textTitle1)}>Are you attending?</span>
+                    <span className={cx(styles.textTitle1, "text-center")}>Are you attending?</span>
 
                     <div className="flex flex-col mt-8 text-center">
                         <p>Hi <b>{guestName}</b>,</p>
