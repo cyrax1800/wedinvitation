@@ -12,6 +12,37 @@
     color: white;
 }
 
+.coverContainer {
+    background-image: url("/cover_bg.jpg");
+
+    @media (min-width: theme("screens.md")) {
+        background-image: url("/cover_bg.jpg");
+    }
+
+    background-size: cover;
+    background-attachment: scroll;
+    background-position: center;
+    color: white;
+
+    @apply flex;
+    @apply justify-center;
+    @apply w-full;
+    @apply h-full;
+    @apply fixed;
+    @apply top-0;
+    @apply bottom-0;
+    @apply left-0;
+    @apply right-0;
+    @apply z-40;
+}
+
+.coverContainerOverlay {
+    background-color: rgba(0, 0, 0, 0.4);
+    @apply flex;
+    @apply w-full;
+    @apply h-full;
+}
+
 .headerOverlay {
     @apply flex;
     @apply flex-col;
@@ -32,6 +63,31 @@
     @apply items-center;
     @apply w-full;
     @apply px-8
+}
+
+.sectionContainerEventDetail {
+    background-image: url("/event_bg2.jpg");
+
+    @media (min-width: theme("screens.md")) {
+        background-image: url("/event_bg2.jpg");
+    }
+    background-size: cover;
+    background-attachment: scroll;
+    background-position: center;
+    @apply flex;
+    @apply items-center;
+    @apply w-full;
+}
+
+.sectionOverlayEventDetail {
+    @apply flex;
+    @apply flex-col;
+    background-color: rgba(0, 0, 0, 0.2);
+    @apply h-full;
+    @apply items-center;
+    @apply pt-10;
+    @apply px-8;
+    @apply w-full;
 }
 
 .sectionOverlayRSVP {
@@ -118,6 +174,17 @@
     @apply max-w-xl;
 }
 
+.boxContainerWhiteWithFlower {
+    @apply bg-white;
+    @apply rounded-md;
+    @apply shadow-md;
+    @apply w-full;
+    @apply max-w-xl;
+    @apply flex;
+    @apply relative;
+    @apply overflow-hidden;
+}
+
 .textTitle {
     @apply text-6xl;
     font-family: var(--font-tangerine);
@@ -184,8 +251,8 @@
 
 .gridContainer {
     @apply columns-1;
-    @apply gap-4;
-    @apply space-y-4;
+    @apply gap-2;
+    @apply space-y-2;
     @apply mt-8;
 
     @media (min-width: theme("screens.md")) {

@@ -14,14 +14,14 @@ interface GalleryComponentProp {
 export const GalleryComponent: FC<GalleryComponentProp> = ({
     language
 }) => {
-    const totalItem = 22;
+    const totalItem = 21;
 
     const content = () => {
         let content = []
         for (let i = 1; i <= totalItem; i++) {
             content.push(
                 <div key={i} className="w-full h-auto">
-                    <Image className="object-contain h-auto" src={"/image_" + i + ".webp"} alt={""} width={512} height={512} quality={70} />
+                    <Image className="object-contain h-auto" src={"/image_" + i + ".webp"} alt={""} width={512} height={512} quality={70} unoptimized/>
                 </div>
             )
         }

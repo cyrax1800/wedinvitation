@@ -11,9 +11,10 @@ import {
     FooterComponent,
     WatchYoutubeComponent,
     GalleryComponent,
-    RSVPGuestComponent
+    RSVPGuestComponent,
+    CoverComponent
 } from "@/components/app"
-import {  useState } from "react";
+import { useState } from "react";
 import cx from "classnames";
 import landingStyles from "./Landing.module.scss";
 import { Data, submitRSVP, submitWishes } from "@/libs/spreadsheet";
@@ -138,7 +139,7 @@ export const HomeComponent: FC<HomeProp> = ({
                 <GroomBrideComponent language={language} />
                 <EventDetailComponent language={language} />
                 <div className="flex w-full h-[75vh]">
-                    <Image className="object-cover w-full h-full" src={"/rsvp_bg.webp"} alt={""} width={512} height={192} />
+                    <Image className="object-cover w-full h-full" src={"/rsvp_bg.webp"} alt={""} width={512} height={192} unoptimized />
                     <div className={cx(landingStyles.sectionOverlayRSVP)} />
                 </div>
 
@@ -190,18 +191,7 @@ export const HomeComponent: FC<HomeProp> = ({
                 <FooterComponent />
             </div>
             {
-                !isOpen && <div className="animate-in fade-in duration-500 flex justify-center bg-white w-full h-full fixed top-0 bottom-0 left-0 right-0 z-40">
-                    <div className={cx("flex flex-col self-center text-center", landingStyles.textNormal3Default)}>
-                        <span className={cx(landingStyles.textTitle)}>#SOmeonetoMichael</span>
-                        <span className={cx("mt-12", landingStyles.textNormal1Default)}>{dictionary.greetings[language]} <b className="text-blue-500">{name}</b>,</span>
-                        <span className="mt-4">{dictionary.invited[language]}</span>
-                        <span>{dictionary.weddingOf[language]}</span>
-                        <span className={cx(landingStyles.textTitle2, "mt-4")}>{dictionary.groombridename[language]}</span>
-                        <button className={cx(landingStyles.buttonDefault, "mt-8")} onClick={() => {
-                            setIsOpen(true)
-                        }}>{dictionary.open[language]}</button>
-                    </div>
-                </div>
+                !isOpen && <CoverComponent isOpenCallback={() => { setIsOpen(true) }} language={language} name={name} />
             }
 
             <div className="fixed top-2 right-2 z-50">
