@@ -16,11 +16,11 @@ export const WatchYoutubeComponent: FC<WatchYoutubeProp> = ({
 }) => {
     return (
         <>
-            <div className={cx(styles.sectionContainer)}>
+            <div className={cx(styles.sectionContainer, "bg-white")}>
                 <span className={cx(styles.textTitle1, "text-center")}>{dictionary.liveStream[language]}</span>
 
                 <div className={cx(styles.iframeContainer, "mt-4")}>
-                    <YoutubeLazyLoadComponent youtubeId="2pQKqQ9sG50" />
+                    <YoutubeLazyLoadComponent youtubeId="Q2oCwqOKDbA" />
                 </div>
             </div>
         </>

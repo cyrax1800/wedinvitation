@@ -188,7 +188,7 @@ export const HomeComponent: FC<HomeProp> = ({
 
                 <GalleryComponent language={language} />
 
-                {/* <WatchYoutubeComponent language={language} /> */}
+                <WatchYoutubeComponent language={language} />
                 <FooterComponent />
             </div>
             {

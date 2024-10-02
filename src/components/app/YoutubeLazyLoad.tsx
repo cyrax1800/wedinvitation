@@ -1,5 +1,7 @@
 import { FC, useState } from "react";
 import Image from "next/image";
+import cx from "classnames";
+import styles from "./Landing.module.scss";
 
 export interface YoutubeLazyLoadProps {
     youtubeId: string,
@@ -28,25 +30,31 @@ export const YoutubeLazyLoadComponent: FC<YoutubeLazyLoadProps> = ({
                 ></iframe>
             ) : (
 
-                <button type="button" onClick={() => setShowVideo(true)} className="group w-full relative aspect-[16/9]">
+                <button type="button" onClick={() => window.location.href = `https://www.youtube.com/live/${youtubeId}`} className="rounded-lg flex group w-full relative aspect-[16/9]">
                     <Image
-                        className="h-full w-full"
+                        className="h-full w-full rounded-lg "
                         src={thumbnailOverride || `https://i3.ytimg.com/vi_webp/${youtubeId}/maxresdefault.webp`}
                         alt={""}
-                        fill
+                        width={1920}
+                        height={1080}
                         priority
                         unoptimized={true}
                     />
 
-                    <div className="relative grid place-items-center">
-                        <Image
-                            src="/youtube.svg"
-                            alt=""
-                            width={64}
-                            height={64}
-                            unoptimized={true}
-                        />
+                    <div className={cx(styles.sectionOverlayYoutube, "flex justify-center rounded-lg items-center")}>
+                        <div className=" items-center text-center">
+                            <Image
+                                src="/youtube.svg"
+                                alt=""
+                                width={64}
+                                height={64}
+                                unoptimized={true}
+                            />
+                        </div>
+
                     </div>
+
+
                 </button>
             )}
         </div>

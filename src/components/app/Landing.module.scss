@@ -140,6 +140,13 @@
     @apply absolute;
 }
 
+.sectionOverlayYoutube {
+    background-color: rgba(0, 0, 0, 0.5);
+    @apply w-full;
+    @apply h-full;
+    @apply absolute;
+}
+
 .footerContainer {
     @apply pt-10;
     @apply flex;
