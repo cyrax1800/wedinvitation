@@ -9,7 +9,11 @@ const nextConfig = {
     sassOptions: {
         includePaths: [path.join(__dirname, "styles")],
     },
-    serverActions: { allowedOrigins: ["someonetomichael.com", "localhost:3002"], },
+    experimental: {
+        serverActions: {
+            allowedOrigins: ["someonetomichael.com", "localhost:3002"]
+        }
+    },
     reactStrictMode: true,
 };
 
