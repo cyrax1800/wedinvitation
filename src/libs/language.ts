@@ -45,11 +45,11 @@ export const dictionary: StringDictionary = {
     },
     "sonOf": {
         "en": "Son of",
-        "id": "Anak laki laki dari"
+        "id": "Putra dari"
     },
     "daughterOf": {
         "en": "Daughter of",
-        "id": "Anak perempuan dari"
+        "id": "Putri dari"
     },
     "mr": {
         "en": "Mr.",

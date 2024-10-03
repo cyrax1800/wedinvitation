@@ -43,7 +43,7 @@ export const GroomBrideComponent: FC<GroomBrideComponentProp> = ({
                         <div className={cx(styles.profileBoxContainer2)}>
                             <div className={cx(styles.textTitle2)}>Sonia Christina</div>
                             <div className={cx(styles.textSecondary, "mt-4")}>{dictionary.daughterOf[language]}</div>
-                            <div className="font-medium">{dictionary.mr[language]} Gou teng tjiu</div>
+                            <div className="font-medium">{dictionary.mr[language]} Gou Teng Tjiu</div>
                             <div className={cx(styles.textSecondary)}>{dictionary.and[language]}</div>
                             <div className="font-medium">{dictionary.ms[language]} Hendrajati Suardja</div>
                         </div>

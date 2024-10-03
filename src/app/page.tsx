@@ -1,5 +1,4 @@
 
-import { useSearchParams } from 'next/navigation'
 import cx from "classnames";
 import styles from "./App.module.scss";
 import { tangerine } from "./font";
