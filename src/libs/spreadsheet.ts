@@ -45,6 +45,16 @@ export interface Data {
     attend: Attendance
 }
 
+// const CAN_ATTEND_IDX = 6
+// const HOLY_MATRIMONY_IDX = 7
+// const RECEPTION_IDX = 8
+// const GUEST_COUNT_IDX = 9
+
+const CAN_ATTEND_IDX = 11
+const HOLY_MATRIMONY_IDX = 12
+const RECEPTION_IDX = 13
+const GUEST_COUNT_IDX = 14
+
 export async function getData(to: String) {
     const lowered = to.toLowerCase()
     const split = lowered.split(" and ")
@@ -57,7 +67,7 @@ export async function getData(to: String) {
         "Wishes!A2:B300"
     ]
     if (hasName) {
-        sheets.push("List Teman!A2:J300")
+        sheets.push("List Teman v2!A2:Q300")
     }
 
     const batchResp = (await client.spreadsheets.values.batchGet({
@@ -78,11 +88,11 @@ export async function getData(to: String) {
     if (hasName) {
         batchResp.data.valueRanges!![1].values!!.forEach((e, index) => {
             if (e[1].toLowerCase() === firstName && e[2].toLowerCase() === lastName) {
-                console.log(e[6] === "")
-                attendRes.canAttend = e[6] === "" ? undefined : Boolean(e[6])
-                attendRes.isHolyMatrimony = e[7] == '' ? false : e[7]
-                attendRes.isReception = e[8] == '' ? false : e[8]
-                attendRes.guestcount = (Number(e[9]) == 0) ? 1 : Number(e[9])
+                console.log(e[CAN_ATTEND_IDX] === "")
+                attendRes.canAttend = e[CAN_ATTEND_IDX] === "" ? undefined : Boolean(e[CAN_ATTEND_IDX])
+                attendRes.isHolyMatrimony = e[HOLY_MATRIMONY_IDX] == '' ? false : e[HOLY_MATRIMONY_IDX]
+                attendRes.isReception = e[RECEPTION_IDX] == '' ? false : e[RECEPTION_IDX]
+                attendRes.guestcount = (Number(e[GUEST_COUNT_IDX]) == 0) ? 1 : Number(e[GUEST_COUNT_IDX])
                 attendRes.rowIndex = index
                 attendRes.rows = e
                 return
@@ -135,14 +145,14 @@ export async function submitRSVP(
     const row = attend.rows
     row[0] = Number(row[0])
     row[5] = Number(row[5])
-    row[6] = isAttended
-    row[7] = isHolyMatrimony
-    row[8] = isReception
-    row[9] = guestCount
+    row[CAN_ATTEND_IDX] = isAttended
+    row[HOLY_MATRIMONY_IDX] = isHolyMatrimony
+    row[RECEPTION_IDX] = isReception
+    row[GUEST_COUNT_IDX] = guestCount
     const res = await client.spreadsheets.values.update({
         spreadsheetId: id,
-        range: `List Teman!A${attend.rowIndex + 2}`,
-        valueInputOption: "RAW",
+        range: `List Teman v2!A${attend.rowIndex + 2}`,
+        valueInputOption: "USER_ENTERED",
         requestBody: {
             values: [
                 row
