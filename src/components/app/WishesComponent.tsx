@@ -95,9 +95,9 @@ export const WishesComponent: FC<WishesComponentProp> = ({
                         wishes.map((e, idx) => {
                             if (idx >= (page - 1) * 6 && idx <= Math.min((page * 6) - 1, wishes.length))
                                 return (<div key={idx} className={cx(styles.gridItem)}>
-                                    <span className={cx(styles.textNormal3Default)}>
+                                    <pre className={cx(styles.textNormal3Default, "whitespace-pre-wrap font-sans")}>
                                         {e.wish}
-                                    </span>
+                                    </pre>
                                     <span className={cx(styles.textNormal3Default, "text-right", "mt-2")}>{e.name}</span>
                                 </div>)
                         })

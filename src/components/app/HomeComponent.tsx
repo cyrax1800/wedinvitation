@@ -27,12 +27,16 @@ interface HomeProp {
     propName: string;
     propLang: string;
     propData: Data;
+    isEnableRSVP?: boolean;
+    isEnableGift?: boolean;
 }
 
 export const HomeComponent: FC<HomeProp> = ({
     propName,
     propLang,
-    propData
+    propData,
+    isEnableRSVP = true,
+    isEnableGift = true
 }) => {
     console.log("render")
     const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -139,13 +143,15 @@ export const HomeComponent: FC<HomeProp> = ({
                 <HeaderComponent language={language} />
                 <GroomBrideComponent language={language} />
                 <EventDetailComponent language={language} />
-                <div className="flex w-full h-[75vh]">
-                    <Image className="object-cover w-full h-full" src={"/rsvp_bg.webp"} alt={""} width={512} height={192} unoptimized />
-                    <div className={cx(landingStyles.sectionOverlayRSVP)} />
-                </div>
+                {isEnableRSVP && (
+                    <div className="flex w-full h-[75vh]">
+                        <Image className="object-cover w-full h-full" src={"/rsvp_bg.webp"} alt={""} width={512} height={192} unoptimized />
+                        <div className={cx(landingStyles.sectionOverlayRSVP)} />
+                    </div>
+                )}
 
                 {
-                    (!data.isGuest && isEditable) && (<RSVPComponent
+                    (!data.isGuest && isEditable && isEnableRSVP) && (<RSVPComponent
                         language={language}
                         guestName={name}
                         isAttended={data.attend.canAttend ?? true}
@@ -166,7 +172,7 @@ export const HomeComponent: FC<HomeProp> = ({
                         }} />)
                 }
                 {
-                    (!data.isGuest && data.attend.canAttend !== undefined && !isEditable) && (<RSVPSubmitedComponent
+                    (!data.isGuest && data.attend.canAttend !== undefined && !isEditable && isEnableRSVP) && (<RSVPSubmitedComponent
                         language={language}
                         guestName={name}
                         onClick={() => {
@@ -175,7 +181,7 @@ export const HomeComponent: FC<HomeProp> = ({
                 }
 
                 {
-                    (data.isGuest) && (
+                    (data.isGuest && isEnableRSVP) && (
                         <RSVPGuestComponent guestName={name} language={language} />
                     )
                 }
@@ -184,7 +190,7 @@ export const HomeComponent: FC<HomeProp> = ({
                     console.log("Wishes Submited")
                     submitWishesCaller(name, wishes)
                 }} />
-                <GiftComponent language={language} />
+                {isEnableGift && <GiftComponent language={language} />}
 
                 <GalleryComponent language={language} />
 
