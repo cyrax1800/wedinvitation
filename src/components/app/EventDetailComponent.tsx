@@ -25,7 +25,7 @@ export const EventDetailComponent: FC<EventDetailComponentProp> = ({
                             <div className="flex flex-col p-4 items-center z-10">
                                 <span className={cx(styles.textTitle2, "text-center")}>{dictionary.holyMatrimony[language]}</span>
                                 <span className="mt-12"><b>{dictionary.monday[language]}, 11 November 2024</b></span>
-                                <span >11.00 WIB - 13.00 WIB</span>
+                                <span >13.00 WIB - 15.00 WIB</span>
                                 <span className="mt-6"><b>Wihara Ekayana Arama</b></span>
                                 <span className="text-center">Jl. Mangga 2 No.8, RT.8/RW.8, Duri Kepa, Kec. Kb. Jeruk, Jakarta Barat, Jakarta</span>
                                 <a className={cx(styles.buttonDefault, "mt-8")} href="https://maps.app.goo.gl/yfa7jZDFP1TcnTAUA" target="_blank">

@@ -14,7 +14,7 @@ interface GalleryComponentProp {
 export const GalleryComponent: FC<GalleryComponentProp> = ({
     language
 }) => {
-    const totalItem = 21;
+    const totalItem = 24;
 
     const content = () => {
         let content = []

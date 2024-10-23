@@ -11,7 +11,7 @@ const nextConfig = {
     },
     experimental: {
         serverActions: {
-            allowedOrigins: ["someonetomichael.com", "localhost:3002"]
+            allowedOrigins: ["https://someonetomichael.com", "http://localhost:3002"]
         }
     },
     reactStrictMode: true,
