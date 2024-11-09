@@ -62,7 +62,7 @@ export const EventDetailComponent: FC<EventDetailComponentProp> = ({
                                     {dictionary.getDirection[language]}
                                 </a>
 
-                                <a className={cx(styles.buttonDefault, "mt-2")} href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE3OTEzNTcxMzEzNTc0NzEx?igsh=MWcwcXJxY2I1ZHY3ZQ==" target="_blank">
+                                <a className={cx(styles.buttonDefault, "mt-2")} href="https://drive.google.com/file/d/1aAxeKJvrlIRjmXoma4DrDrpELujs_ByM/view?usp=sharing" target="_blank">
                                     {dictionary.accessToVenue[language]}
                                 </a>
                             </div>
